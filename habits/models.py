@@ -11,8 +11,10 @@ class Habit(models.Model):
     is_nice = models.BooleanField(default=False, verbose_name="Признак приятной привычки")
     related_habit = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True,
                                       verbose_name="Связанная привычка")
-    time_to_complete = models.TimeField(verbose_name="Время для выполнения", null=True, blank=True)
     is_publish = models.BooleanField(default=False, verbose_name="Признак публичности")
+
+    time_to_done = models.PositiveIntegerField(null=True, blank=True, verbose_name="Время для выполнения")
+    award = models.CharField(max_length=50, verbose_name="Вознагрождение", null=True, blank=True)
 
     def __str__(self):
         return f'{self.owner} будет {self.action} в {self.time} в {self.place}'
