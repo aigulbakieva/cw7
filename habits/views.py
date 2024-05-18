@@ -45,3 +45,4 @@ class PublishHabitListApiView(ListAPIView):
     queryset = Habit.objects.filter(is_publis=True)
     serializer_class = HabitSerializer
     permission_classes = [IsAuthenticated, IsOwner]
+

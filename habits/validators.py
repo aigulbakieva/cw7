@@ -48,3 +48,4 @@ class IsNiceValidator:
         award = dict(value).get(self.field3)
         if is_nice is True and (rel_hab is not None and award is not None):
             raise ValidationError("У приятной привычки не может быть вознаграждения или связанной привычки.")
+

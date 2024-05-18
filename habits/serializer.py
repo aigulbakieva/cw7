@@ -12,3 +12,4 @@ class HabitSerializer(serializers.ModelSerializer):
             [RelatedHabitAwardValidator(field1='related_habit', field2='award')], [TimeValidator(field='time_to_done')],
             [RelatedHabitIsNiceValidator(field1='related_habit', field2='is_nice')],
             [IsNiceValidator(field1='related_habit', field2='is_nice', field3='award')])
+
