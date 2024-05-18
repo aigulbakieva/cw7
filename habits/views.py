@@ -1,12 +1,15 @@
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.permissions import IsAuthenticated
 
 from habits.models import Habit
 from habits.serializer import HabitSerializer
+from users.permissions import IsOwner
 
 
 class HabitCreateApiView(CreateAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         habit = serializer.save()
@@ -17,18 +20,28 @@ class HabitCreateApiView(CreateAPIView):
 class HabitListApiView(ListAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
+    permission_classes = [IsAuthenticated, IsOwner]
 
 
 class HabitRetrieveApiView(RetrieveAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
+    permission_classes = [IsOwner]
 
 
 class HabitUpdateApiView(UpdateAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
+    permission_classes = [IsOwner]
 
 
 class HabitDestroyApiView(DestroyAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
+    permission_classes = [IsOwner]
+
+
+class PublishHabitListApiView(ListAPIView):
+    queryset = Habit.objects.filter(is_publis=True)
+    serializer_class = HabitSerializer
+    permission_classes = [IsAuthenticated, IsOwner]
