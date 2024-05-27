@@ -15,6 +15,7 @@ class Habit(models.Model):
 
     time_to_done = models.PositiveIntegerField(null=True, blank=True, verbose_name="Время для выполнения")
     award = models.CharField(max_length=50, verbose_name="Вознагрождение", null=True, blank=True)
+    period = models.PositiveIntegerField(default=1, verbose_name="Периодичность выполнения привычки(кол-во дней)")
 
     def __str__(self):
         return f'{self.owner} будет {self.action} в {self.time} в {self.place}'

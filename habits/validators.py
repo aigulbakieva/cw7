@@ -48,3 +48,13 @@ class IsNiceValidator:
         award = dict(value).get(self.field3)
         if is_nice is True and (rel_hab is not None and award is not None):
             raise ValidationError("У приятной привычки не может быть вознаграждения или связанной привычки.")
+
+
+class PeriodValidator:
+    def __init__(self, field):
+        self.field = field
+
+    def __call__(self, value):
+        period = dict(value).get(self.field)
+        if period is not None and int(period) > 7:
+            raise ValidationError("Нельзя выполнять привычку реже чем 1 раз в неделю")

@@ -111,3 +111,15 @@ class HabitTestCase(APITestCase):
         self.assertEqual(
             response.status_code, status.HTTP_400_BAD_REQUEST
         )
+
+    def test_habit_period(self):
+        url = reverse("habits:habit-create")
+        data = {
+            "place": "test",
+            "action": "test",
+            "period": 9
+        }
+        response = self.client.post(url, data)
+        self.assertEqual(
+            response.status_code, status.HTTP_400_BAD_REQUEST
+        )
