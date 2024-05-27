@@ -30,9 +30,9 @@ class RelatedHabitIsNiceValidator:
         self.field2 = field2
 
     def __call__(self, value):
-        rel_hab = dict(value).get(self.field1)
+        related_habit = dict(value).get(self.field1)
         is_nice = dict(value).get(self.field2)
-        if rel_hab and is_nice is False:
+        if related_habit and is_nice is True:
             raise ValidationError("В связанные привычки могут попадать только привычки с признаком приятной привычки.")
 
 
@@ -48,4 +48,3 @@ class IsNiceValidator:
         award = dict(value).get(self.field3)
         if is_nice is True and (rel_hab is not None and award is not None):
             raise ValidationError("У приятной привычки не может быть вознаграждения или связанной привычки.")
-
