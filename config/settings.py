@@ -115,13 +115,14 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "https://read-only.example.com",
-    "https://read-and-write.example.com",
+    "https://127.0.0.1:8000/",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://read-and-write.example.com",
+    "https://127.0.0.1:8000/",
 ]
+
+CORS_ALLOW_ALL_ORIGINS = False
 
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_TASK_TRACK_STARTED = True
@@ -141,14 +142,3 @@ CELERY_BEAT_SCHEDULE = {
 
 TELEGRAM_TOKEN = "6426131129:AAGWtloYRKXYSdiknR8DyUKtBI8GZTf2REE"
 TG_URL = "https://api.telegram.org/bot"
-
-CORS_ALLOWED_ORIGINS = [
-   "https://read-only.example.com",
-   "https://read-and-write.example.com",
-]
-
-CSRF_TRUSTED_ORIGINS = [
-   "https://read-and-write.example.com",  # Замените на адрес вашего фронтенд-сервера и добавьте адрес бэкенд-сервера
-]
-
-CORS_ALLOW_ALL_ORIGINS = False
